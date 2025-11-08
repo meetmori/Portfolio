@@ -1,0 +1,30 @@
+<section id="about" class="py-20 bg-[#191923]">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+      <div>
+        <div *ngFor="let service of services" class="flex items-start gap-4 mb-8">
+          <div class="text-[#F75023] text-2xl mt-1">
+            <i [class]="service.icon"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white">{{ service.title }}</h3>
+            <p class="text-gray-400">{{ service.description }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-4xl font-bold text-white mb-6">About Me</h2>
+        <p class="text-lg text-gray-300 leading-relaxed mb-8">
+          I am a dedicated and results-oriented Software Developer currently contributing to innovative projects at TatvaSoft. With a strong foundation in full-stack development, I specialize in building dynamic and efficient web applications using MEAN stack, .NET, PostgreSQL, and NestJS. I thrive on solving complex problems and am passionate about writing clean, maintainable, and scalable code.
+        </p>
+        <div class="flex flex-wrap gap-8">
+          <div *ngFor="let stat of stats">
+            <p class="text-4xl font-bold text-[#F75023]">{{ stat.value }}</p>
+            <p class="text-gray-400">{{ stat.label }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

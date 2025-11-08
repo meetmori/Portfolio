@@ -1,0 +1,44 @@
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" [ngClass]="{'bg-[#10101A]/80 backdrop-blur-sm shadow-lg': isScrolled, 'bg-transparent': !isScrolled}">
+  <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="text-2xl font-bold text-white">
+      <a href="#home" (click)="scrollToSection('home', $event)">Meet Mori.</a>
+    </div>
+    
+    <ul class="hidden md:flex space-x-8 items-center">
+      <li *ngFor="let link of navLinks">
+        <a 
+          [href]="'#' + link.id" 
+          (click)="scrollToSection(link.id, $event)"
+          class="text-lg font-medium transition-colors duration-300"
+          [ngClass]="{'text-[#F75023]': activeSection === link.id, 'text-gray-300 hover:text-[#F75023]': activeSection !== link.id}"
+        >
+          {{ link.title }}
+        </a>
+      </li>
+    </ul>
+    
+    <div class="md:hidden">
+      <button (click)="isMenuOpen = !isMenuOpen" class="text-white focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path *ngIf="isMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          <path *ngIf="!isMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+  
+  <div *ngIf="isMenuOpen" class="md:hidden bg-[#10101A]">
+    <ul class="flex flex-col items-center py-4">
+      <li *ngFor="let link of navLinks" class="py-2">
+        <a 
+          [href]="'#' + link.id" 
+          (click)="scrollToSection(link.id, $event)"
+          class="text-lg font-medium transition-colors duration-300"
+          [ngClass]="{'text-[#F75023]': activeSection === link.id, 'text-gray-300 hover:text-[#F75023]': activeSection !== link.id}"
+        >
+          {{ link.title }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
